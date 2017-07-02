@@ -69,7 +69,7 @@ ReactDOM.render(
 
 function getVidUrl(url_arr){
     if(url_arr.length !== 0){
-        return <li className="link"><a href={url_arr[0]}>Live stream</a></li>
+        return <li className="link"><a href={url_arr[0]} target="_blank">Live stream</a></li>
     }
     return;
 }
