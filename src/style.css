@@ -1,0 +1,26 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+ul, li {
+  list-style: none;
+}
+
+.app-wrapper {
+  width: 100%;
+}
+
+.header {
+  color: #FF0069;
+}
+
+.name {
+  font-size: 2em;
+}
+
+.start {
+
+}
+
+.image {
+  width: 100%;
+}
