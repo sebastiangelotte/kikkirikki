@@ -5,8 +5,22 @@ ul, li {
   list-style: none;
 }
 
+a {
+  color: #FFF;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
 .app-wrapper {
-  width: 100%;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .header {
@@ -23,4 +37,19 @@ ul, li {
 
 .image {
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  top: -140px;
+  z-index: -1;
+}
+
+.launch-wrapper {
+    overflow: hidden;
+    height: 400px;
+    margin-bottom: 30px;
+    color: #FFF;
+}
+
+.info-list {
+    margin-top: 30px;
 }

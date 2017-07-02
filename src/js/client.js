@@ -27,7 +27,7 @@ class FetchDemo extends React.Component {
         <h1 className="header">{this.props.headerText}</h1>
         {this.state.launches.map(launch =>
           <div className="launch-wrapper" key={launch.id}>
-            <ul>
+            <ul className="info-list">
               <li className="name">{launch.name}</li>
               <li className="start">{launch.windowstart}</li>
               {getVidUrl(launch.vidURLs)}
