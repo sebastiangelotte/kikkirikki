@@ -30,6 +30,7 @@ class FetchDemo extends React.Component {
             <ul>
               <li className="name">{launch.name}</li>
               <li className="start">{launch.windowstart}</li>
+              {getVidUrl(launch.vidURLs)}
             </ul>
             <img className="image" src={launch.rocket.imageURL} />
           </div>
@@ -40,6 +41,13 @@ class FetchDemo extends React.Component {
 }
 
 ReactDOM.render(
-  <FetchDemo headerText="Upcoming launches"/>,
+  <FetchDemo headerText="Upcoming launches" />,
   document.getElementById('app')
 );
+
+function getVidUrl(url_arr){
+    if(url_arr.length !== 0){
+        return <li className="link"><a href={url_arr[0]}>Live stream</a></li>
+    }
+    return;
+}
