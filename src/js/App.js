@@ -1,6 +1,7 @@
-import React, Component from 'react'
+import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+
 
 const Wrapper = styled.div`
   width: 100%;
@@ -12,15 +13,27 @@ const Title = styled.h1`
 `
 
 const Item = styled.div`
-  max-width: 600px;
+  max-width: 800px;
   height: 300px;
-  border: 1px solid #000;
-  background: {this.state.launches.rocket.imageURL};
-  margin: 0 auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-image: url('placeholder_800.png');
+  background-image: url('${ props => props.background}');
+  margin: 15px 0;
+  padding: 20px;
+  transition: transform 300ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `
 
 const Text = styled.div`
   color: #FFF;
+  padding: 10px 0;
+  ${ props => props.large && 'font-size: 1.6em;'}
+  ${ props => props.small && 'font-size: 0.9em;'}
 `
 
 const Link = styled.a`
@@ -31,7 +44,7 @@ const Link = styled.a`
   cursor: pointer;
 `
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
 
@@ -53,9 +66,9 @@ class App extends Component {
       <Wrapper>
         <Title>{this.props.headerText}</Title>
         {this.state.launches.map(launch =>
-          <Item key={launch.id}>
-            <Text name>{launch.name}</Text>
-            <Text start>{launch.windowstart}</Text>
+          <Item key={launch.id} background={launch.rocket.imageURL}>
+            <Text large>{launch.name}</Text>
+            <Text small>{launch.windowstart}</Text>
             {getVidUrl(launch.vidURLs)}
           </Item>
         )}
@@ -66,7 +79,9 @@ class App extends Component {
 
 function getVidUrl(url_arr){
     if(url_arr.length !== 0){
-        return <Link href={url_arr[0]}>Live stream</Link>
+        return <Link href={url_arr[0]} target="_blank">Live stream</Link>
     }
     return
 }
+
+export default App
