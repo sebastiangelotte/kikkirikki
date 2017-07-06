@@ -1,7 +1,7 @@
 {
-  "name": "react-tutorials",
-  "version": "0.0.0",
-  "description": "",
+  "name": "upcoming-launches",
+  "version": "0.1.0",
+  "description": "react experiment",
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.16.2",
@@ -16,13 +16,13 @@
     "babel-preset-stage-0": "^6.3.13",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "tingle.js": "^0.11.0",
+    "styled-components": "^2.1.1",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.16.5"
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot",
+    "dev": "webpack-dev-server --content-base src --Inline --hot",
     "production": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
