@@ -11,7 +11,8 @@ const Root = styled.div`
   height: 100%;
   padding: 0;
   margin: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-image: url('${ background }');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,6 +26,13 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   color: #FF0069;
+  margin: 0;
+  padding: 40px 20px 20px 20px;
+  text-transform: uppercase;
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .02em;
 `
 
 const Item = styled.div`
@@ -37,18 +45,19 @@ const Item = styled.div`
   background-image: url('${ placeholder }');
   background-image: url('${ props => props.background}');
   margin: 15px;
-  padding: 20px;
+  padding: 30px 40px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
   &:hover {
 
   }
 `
 
-const Text = styled.p`
+const Text = styled.div`
   color: #FFF;
-  padding: 10px 0;
+  padding: 5px 0 0 0;
   transition: opacity 100ms ease-in-out;
   ${ props => props.large && 'font-size: 1.6em;'}
   ${ props => props.small && 'font-size: 0.9em;'}
@@ -59,7 +68,11 @@ const Text = styled.p`
   }
   ${props => props.showOnHover && `
     opacity: 0;
+    padding: 20px 0 0 0;
     max-width: 300px;
+    max-height: 210px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   `}
 `
 
@@ -71,10 +84,11 @@ const Link = styled.a`
   cursor: pointer;
   ${props => props.stream && `
     position: absolute;
+    opacity: 0.5;
     top: 0;
     right: 0;
     padding: 10px;
-    font-size: 1em;
+    font-size: 0.8em;
 
     &:hover {
       opacity: 0.8;
