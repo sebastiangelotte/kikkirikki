@@ -3,7 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 const placeholder = 'placeholder_800.png'
-const background = 'bg.jpg'
+const background = 'bg2.jpg'
 
 
 const Root = styled.div`
@@ -12,14 +12,14 @@ const Root = styled.div`
   padding: 0;
   margin: 0;
   font-family: 'Raleway', sans-serif;
-  background-image: url('${ background }');
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 `
 
 const Wrapper = styled.div`
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
 `
 
@@ -30,20 +30,23 @@ const Title = styled.h1`
 const Item = styled.div`
   height: 300px;
   position: relative;
+  overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
   background-image: url('${ placeholder }');
   background-image: url('${ props => props.background}');
-  margin: 15px 0;
+  margin: 15px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
 
   }
 `
 
-const Text = styled.div`
+const Text = styled.p`
   color: #FFF;
   padding: 10px 0;
   transition: opacity 100ms ease-in-out;
@@ -56,7 +59,7 @@ const Text = styled.div`
   }
   ${props => props.showOnHover && `
     opacity: 0;
-    width: 50%;
+    max-width: 300px;
   `}
 `
 
