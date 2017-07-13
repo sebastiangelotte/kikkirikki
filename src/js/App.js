@@ -2,86 +2,130 @@ import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
+import { media } from './utils/style-utils';
 
-const Wrapper = styled.div`
-  width: 100%;
-  font-family: 'Raleway', sans-serif;
-`
 
-const Title = styled.h1`
-  color: #FF0069;
-`
+import Filter from './components/Filter'
+import Item from './components/Item'
 
-const Item = styled.div`
-  max-width: 800px;
-  height: 300px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-image: url('placeholder_800.png');
-  background-image: url('${ props => props.background}');
-  margin: 15px 0;
-  padding: 20px;
-  transition: transform 300ms ease-in-out;
+const background = 'bg.jpg'
 
-  &:hover {
-    transform: scale(1.02);
-  }
-`
-
-const Text = styled.div`
-  color: #FFF;
-  padding: 10px 0;
-  ${ props => props.large && 'font-size: 1.6em;'}
-  ${ props => props.small && 'font-size: 0.9em;'}
-`
-
-const Link = styled.a`
-  color: #FFF;
-  font-size: 1.3em;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-`
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      launches: []
+      data: []
     }
   }
 
   componentDidMount() {
     axios.get('https://launchlibrary.net/1.2/launch/next/20')
       .then(res => {
-        const launches = res.data.launches
-        this.setState({ launches })
+        const data = res.data.launches
+        this.setState({ data })
       })
   }
 
   render() {
     return (
-      <Wrapper>
-        <Title>{this.props.headerText}</Title>
-        {this.state.launches.map(launch =>
-          <Item key={launch.id} background={launch.rocket.imageURL}>
-            <Text large>{launch.name}</Text>
-            <Text small>{launch.windowstart}</Text>
-            {getVidUrl(launch.vidURLs)}
-          </Item>
-        )}
-      </Wrapper>
+      <Root>
+        <Controls>
+          <Title>{this.props.headerText}</Title>
+          <Filter data={this.state.data} />
+          <Masthead>Rymdklubben.</Masthead>
+        </Controls>
+        <Wrapper>
+          {this.state.data.map(item =>
+            <Item key={item.id} data={item} />
+          )}
+        </Wrapper>
+      </Root>
     )
   }
 }
 
-function getVidUrl(url_arr){
-    if(url_arr.length !== 0){
-        return <Link href={url_arr[0]} target="_blank">Live stream</Link>
-    }
-    return
-}
+//CSS
+const Root = styled.div`
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-image: url('${ background }');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+
+  ${media.medium`
+    flex-direction: column;
+  `}
+`
+
+const Wrapper = styled.div`
+  width: 70%;
+  max-width: 800px;
+  margin-top: 20px;
+  overflow: scroll;
+  height: 100%;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.2);
+  }
+  ${media.medium`
+    width: 100%;
+    max-width: none;
+  `}
+`
+
+const Controls = styled.div`
+  width: 30%;
+  min-width: 390px;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  ${media.medium`
+    margin-left: 135px;
+  `}
+  ${media.small`
+    margin-left: 0px;
+  `}
+`
+
+const Title = styled.h1`
+  color: #FF0069;
+  text-transform: uppercase;
+  padding-left: 20px;
+  font-size: 33px;
+  font-weight: 600;
+  letter-spacing: .02em;
+`
+
+const Masthead = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #FFF;
+  font-family: consolas;
+  font-size: 13px;
+  ${media.medium`
+    display: none;
+  `}
+`
 
 export default App
