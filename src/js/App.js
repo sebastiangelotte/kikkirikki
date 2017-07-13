@@ -8,7 +8,7 @@ import { media } from './utils/style-utils';
 import Filter from './components/Filter'
 import Item from './components/Item'
 
-const background = 'bg2.jpg'
+const background = 'bg.jpg'
 
 
 class App extends React.Component {
