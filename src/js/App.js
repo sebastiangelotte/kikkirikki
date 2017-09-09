@@ -69,7 +69,6 @@ const Root = styled.div`
 const Wrapper = styled.div`
   width: 70%;
   max-width: 800px;
-  margin-top: 20px;
   overflow: scroll;
   height: 100%;
 

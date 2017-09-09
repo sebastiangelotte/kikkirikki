@@ -15,7 +15,6 @@ export default class Item extends React.Component {
         <Date date={this.props.data.windowstart}/>
         <Text large>{this.props.data.name}</Text>
         <Text small>{this.props.data.windowstart}</Text>
-        <Text showOnHover>{this.props.data.missions[0].description}</Text>
       </Wrapper>
     )
   }
