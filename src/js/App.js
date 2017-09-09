@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import Scrollbars from 'react-custom-scrollbars'
 
 import { media } from './utils/style-utils';
 
@@ -37,9 +38,11 @@ class App extends React.Component {
           <Masthead>Rymdklubben.</Masthead>
         </Controls>
         <Wrapper>
-          {this.state.data.map(item =>
-            <Item key={item.id} data={item} />
-          )}
+            <Scrollbars>
+                {this.state.data.map(item =>
+                    <Item key={item.id} data={item} />
+                )}
+            </Scrollbars>
         </Wrapper>
       </Root>
     )
@@ -69,24 +72,11 @@ const Root = styled.div`
 const Wrapper = styled.div`
   width: 70%;
   max-width: 800px;
-  overflow: scroll;
+  //overflow: initial;
   height: 100%;
 
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
 
-  ::-webkit-scrollbar-track {
-    background-color: transparent;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-  }
 
-  ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.2);
-  }
   ${media.medium`
     width: 100%;
     max-width: none;
