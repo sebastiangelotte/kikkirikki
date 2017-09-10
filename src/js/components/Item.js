@@ -4,7 +4,7 @@ import { media } from '../utils/style-utils';
 
 import Date from './Date'
 
-const placeholder = 'placeholder_800.png'
+import placeholder from '../../assets/placeholder_800.png'
 
 export default class Item extends React.Component {
 

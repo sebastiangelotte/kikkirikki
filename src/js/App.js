@@ -1,15 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import Scrollbars from 'react-custom-scrollbars'
 
 import { media } from './utils/style-utils';
 
-
 import Filter from './components/Filter'
 import Item from './components/Item'
+import CustomScrollbar from './components/CustomScrollbar'
 
-const background = 'bg.jpg'
+const background = require('../assets/bg.jpg')
 
 
 class App extends React.Component {
@@ -38,16 +37,20 @@ class App extends React.Component {
           <Masthead>Rymdklubben.</Masthead>
         </Controls>
         <Wrapper>
-            <Scrollbars>
+            <CustomScrollbar>
                 {this.state.data.map(item =>
                     <Item key={item.id} data={item} />
                 )}
-            </Scrollbars>
+            </CustomScrollbar>
         </Wrapper>
       </Root>
     )
   }
+  checkTop () {
+    console.log("hej")
+  }
 }
+
 
 //CSS
 const Root = styled.div`

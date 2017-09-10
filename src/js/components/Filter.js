@@ -12,8 +12,6 @@ export default class Filter extends React.Component {
   }
 }
 
-const filterList =
-
 function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
