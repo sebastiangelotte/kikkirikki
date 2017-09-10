@@ -10,6 +10,6 @@ link.href = favicon;
 
 
 ReactDOM.render(
-  <App headerText="Upcoming Launches" />,
-  document.getElementById('app')
+	<App headerText="Upcoming Launches" />,
+	document.getElementById('app')
 );
