@@ -2,7 +2,6 @@ const path              = require('path');
 const webpack           = require('webpack');
 const htmlPlugin        = require('html-webpack-plugin');
 const openBrowserPlugin = require('open-browser-webpack-plugin');
-const dashboardPlugin   = require('webpack-dashboard/plugin');
 const autoprefixer      = require('autoprefixer');
 
 const PATHS = {
@@ -13,7 +12,7 @@ const PATHS = {
 
 const options = {
   host:'localhost',
-  port:'5151'
+  port:'6060'
 };
 
 module.exports = {
@@ -53,7 +52,6 @@ module.exports = {
     ]
   },
   plugins:[
-    new dashboardPlugin(),
     new webpack.HotModuleReplacementPlugin({
         multiStep: true
     }),
