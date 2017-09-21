@@ -1,6 +1,5 @@
 import React from 'react'
 
-import styled from 'styled-components';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class CustomScrollbar extends React.Component {
@@ -11,18 +10,15 @@ export default class CustomScrollbar extends React.Component {
     render() {
         return (
             <Scrollbars
-            renderThumbVertical={({ style, ...props }) =>
-                <div {...props} style={{ ...style, backgroundColor: "transparent"}}>
-                    <TrackVert>
-                    </TrackVert>
-                </div>
-            }
-            renderTrackVertical={({style, ...props}) =>
-                //<TrackVert>
+                renderThumbVertical={({style, ...props }) =>
+                    <div {...props} style={{ ...style}, cssThumb}>
+                    </div>
+                }
 
-                    <div {...props} style={{...style}} className="trackV"/>
-                //</TrackVert>
-            }
+                renderTrackVertical={({style, ...props}) =>
+                    <div {...props} style={cssTrack}>
+                    </div>
+                }
             >
             {this.props.children}
         </Scrollbars>
@@ -30,10 +26,15 @@ export default class CustomScrollbar extends React.Component {
     }
 }
 
-const TrackVert = styled.div`
-    background-color: yellow;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    float: right;
-`
+const cssThumb = {
+    backgroundColor: "white",
+    borderRadius: "3px"
+}
+
+const cssTrack = {
+    backgroundColor: "transparent",
+    position: "static",
+    height: "100vh",
+    width: "0.55vw",
+    float: "right"
+}
