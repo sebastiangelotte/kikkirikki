@@ -1,8 +1,8 @@
-const path							= require('path');
-const webpack					 = require('webpack');
-const htmlPlugin				= require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const htmlPlugin = require('html-webpack-plugin');
 const openBrowserPlugin = require('open-browser-webpack-plugin');
-const autoprefixer			= require('autoprefixer');
+const autoprefixer = require('autoprefixer');
 
 const PATHS = {
 	app: path.join(__dirname, '/src'),
