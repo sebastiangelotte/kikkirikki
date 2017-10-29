@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../utils/style-utils';
+import { media } from '../utils/styleUtils';
 
 import Date from './Date'
 

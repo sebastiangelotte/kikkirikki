@@ -1,12 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-
-import { media } from './utils/style-utils';
-
+import { media } from './utils/styleUtils';
 import Filter from './components/Filter'
 import Item from './components/Item'
 import CustomScrollbar from './components/CustomScrollbar'
+
+import AppDispatcher from './utils/AppDispatcher'
+import Actions from './utils/Actions'
+import Store from './utils/Store'
 
 const background = require('../assets/bg.jpg')
 
@@ -21,11 +23,16 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get('https://launchlibrary.net/1.2/launch/next/20')
+		/*axios.get('https://launchlibrary.net/1.2/launch/next/20')
 			.then(res => {
 				const data = res.data.launches
 				this.setState({ data })
-			})
+			})*/
+	}
+
+	getData = () => {
+		console.log("App.getData")
+		Actions.getData()
 	}
 
 	render() {
@@ -34,6 +41,9 @@ class App extends React.Component {
 				<Controls>
 					<Title>{this.props.headerText}</Title>
 					<Filter data={this.state.data} />
+					<button type="button" onClick={this.getData}>
+						<span>Get data!</span>
+					</button>
 					<Masthead>Rymdklubben.</Masthead>
 				</Controls>
 				<Wrapper>

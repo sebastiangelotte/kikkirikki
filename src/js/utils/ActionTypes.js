@@ -1,0 +1,5 @@
+module.exports = {
+	LOAD_DATA: 'LOAD_DATA',
+	REFRESH_DATA: 'REFRESH_DATA',
+	RECIEVE_DATA: 'RECIEVE_DATA'
+}
