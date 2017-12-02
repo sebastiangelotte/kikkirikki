@@ -9,6 +9,7 @@ import Item from './components/Item'
 import CustomScrollbar from './components/CustomScrollbar'
 
 const background = require('../assets/bg.jpg')
+const logo = require('../assets/logo.svg')
 
 
 class App extends React.Component {
@@ -34,7 +35,7 @@ class App extends React.Component {
 				<Controls>
 					<Title>{this.props.headerText}</Title>
 					<Filter data={this.state.data} />
-					<Masthead>Rymdklubben.</Masthead>
+					<Masthead></Masthead>
 				</Controls>
 				<Wrapper>
 					<CustomScrollbar>
@@ -106,12 +107,17 @@ const Title = styled.h1`
 `
 
 const Masthead = styled.div`
+	background-image: url('${logo}');
+	background-size: fit;
+	background-repeat: no-repeat;
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
 	color: #FFF;
 	font-family: consolas;
 	font-size: 13px;
+	height: 200px;
+	width: 200px;
 	${media.medium`
 		display: none;
 	`}
