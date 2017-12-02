@@ -9,6 +9,7 @@ import Filter from './components/Filter'
 import Item from './components/Item'
 
 const background = 'bg.jpg'
+const logo = 'logo.svg'
 
 
 class App extends React.Component {
@@ -34,7 +35,7 @@ class App extends React.Component {
         <Controls>
           <Title>{this.props.headerText}</Title>
           <Filter data={this.state.data} />
-          <Masthead>Rymdklubben.</Masthead>
+          <Masthead></Masthead>
         </Controls>
         <Wrapper>
           {this.state.data.map(item =>
@@ -116,12 +117,18 @@ const Title = styled.h1`
 `
 
 const Masthead = styled.div`
+  background-image: url('${logo}');
+  background-size: fit;
+  background-repeat: no-repeat;
   position: absolute;
   bottom: 10px;
+  fill: #FFF;
   left: 10px;
   color: #FFF;
   font-family: consolas;
   font-size: 13px;
+  height: 200px;
+  width: 200px;
   ${media.medium`
     display: none;
   `}
